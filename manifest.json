@@ -1,0 +1,20 @@
+﻿{
+  "name": "StackOverFlow Full Width",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "Enjoy Full Width of StackOverFlow without any distraction.",
+  "permissions": ["scripting"],
+  "host_permissions": ["https://stackoverflow.com/questions/*"],
+  "action": {
+    "default_title": "StackOverFlow Full Width",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "64": "images/icon-64.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "icons": {
+    "64": "images/icon-64.png",
+    "128": "images/icon-128.png"
+  }
+}
