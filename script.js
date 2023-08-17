@@ -1,28 +1,34 @@
 ﻿window.addEventListener('load', () => {
-  const elmColors = document.getElementsByName('change');
+  const full = document.getElementsByName('full');
+  const original = document.getElementsByName('original');
+  const fullWidth = true;
 
-  for (const element of elmColors) {
+  for (const element of full) {
     element.onclick = () => {
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.scripting.executeScript({
           target: { tabId: tabs[0].id },
           func: enable,
-          args: [''],
+          args: [fullWidth],
         });
       });
     };
   }
 
-  function enable() {
+  for (const element of original) {
+    element.onclick = () => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.scripting.executeScript({
+          target: { tabId: tabs[0].id },
+          func: enable,
+          args: [!fullWidth],
+        });
+      });
+    };
+  }
+
+  function enable(fullWidth) {
     console.log('Window loaded');
-
-    function displayNone(element) {
-      element.style.display = 'none';
-    }
-
-    function width100(element) {
-      element.style.width = '100%';
-    }
 
     // wait until passed selector is finished loading
     function waitForElement(selector) {
@@ -55,19 +61,24 @@
 
     waitForElement('.container')
       .then((container) => {
-        const leftSideBar = container.querySelector('#left-sidebar');
-        const content = container.querySelector('#content');
+        const leftSideBar = container.querySelector('#left-sidebar'); // 164px
+        const content = container.querySelector('#content'); // calc(100% - 164px)
         const innerContent = content.querySelector('.inner-content');
-        const mainBar = innerContent.querySelector('#mainbar');
-        const sideBar = innerContent.querySelector('#sidebar');
+        const mainBar = innerContent.querySelector('#mainbar'); // calc(100% - 300px - var(--su-static24))
+        const sideBar = innerContent.querySelector('#sidebar'); // 300px
 
         setTimeout(() => {
-          displayNone(leftSideBar);
-          width100(content);
-          width100(mainBar);
-          displayNone(sideBar);
-
-
+          if (fullWidth) {
+            leftSideBar.style.display = 'none';
+            content.style.width = '100%';
+            mainBar.style.width = '100%';
+            sideBar.style.display = 'hidden';
+          } else {
+            leftSideBar.style.display = 'flex';
+            content.style.width = 'calc(100% - 164px)';
+            mainBar.style.width = 'calc(100% - 300px - var(--su-static24))';
+            sideBar.style.display = 'visible';
+          }
         }, 1000);
       })
       .catch((error) => {
