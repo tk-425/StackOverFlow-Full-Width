@@ -1,5 +1,7 @@
 # StackOverFlow Full Width Extension
 
+[Chrome Web Store - StackOverFlow Full Width](https://chrome.google.com/webstore/detail/stackoverflow-full-width/mmeheobdnoabakgjidkdfichkpmhdkka/related?hl=en&authuser=0)
+
 [Firefox Browser Add-Ons - StackOverFlow Full Width](https://addons.mozilla.org/en-US/firefox/addon/stackoverflow-full-width/)
 
 ## About
