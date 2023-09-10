@@ -1,6 +1,6 @@
 ﻿{
   "name": "StackOverFlow Full Width",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "manifest_version": 3,
   "description": "Enjoy Full Width of StackOverFlow without any distraction.",
   "icons": {
@@ -23,15 +23,15 @@
   "commands": {
     "enable": {
       "suggested_key": {
-        "default": "Ctrl+Shift+P",
-        "mac": "Command+Shift+P"
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
       },
       "description": "Enable Full Width"
     },
     "disable": {
       "suggested_key": {
-        "default": "Ctrl+Shift+O",
-        "mac": "Command+Shift+O"
+        "default": "Ctrl+Shift+K",
+        "mac": "Command+Shift+K"
       },
       "description": "Disable Full Width"
     }
